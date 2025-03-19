@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import devflix from "/favicon.png";
+import devFlix from "/favicon.png";
 import styles from "./MovieDescription.module.css";
 
 const MovieDescription = (props) => {
@@ -24,7 +24,7 @@ const MovieDescription = (props) => {
           </button>
           <div className={styles.movieType}>
             <div>
-              <img src={devflix} alt="" />
+              <img src={devFlix} alt="" />
               {movieDesc.Type}
               <h1>{movieDesc.Title}</h1>
               <a

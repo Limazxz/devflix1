@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Footer from "./components/footer/Footer";
 import MovieCard from "./components/moviecard/MovieCard";
- import Logo from "./assets/devflix.png";
- import Lupa from "./assets/search.svg";
+import Logo from "./assets/devflix.png";
+import Lupa from "./assets/search.svg";
+import Menu from "./assets/menu-outline.svg";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -13,21 +14,22 @@ const App = () => {
 
   //Utilizando chave de API do arquivo .env
   // const apiKey = import.meta.env.VITE_OMDB_API_KEY;
-  const apiKey = "bf49e65a30f943cc42e9bc245099ba5b";
-  const apiUrl = `https://api.themoviedb.org/3/${apiKey}`;
+  const apiKey = "e4d577fa";
+  const apiUrl = `https://omdbapi.com/?apikey=${apiKey}`;
 
   //Alimentando com dados para não ficar nulo com useEffect
   useEffect(() => {
-    searchMovies("Harry Potter");
+    searchMovies("Batman");
   }, []);
 
   //criando a conexão com a API e trazendo informações
   const searchMovies = async (title) => {
-    const response = await fetch(`${apiUrl}&s=${title}`);
+    const response = await fetch(
+      `${apiUrl}/search/movie?api_key=${apiKey}&query=${title}`
+    );
     const data = await response.json();
 
-    //alimentando o movies
-    setMovies(data.Search);
+    setMovies(data.results); // Ajuste para `results` conforme o retorno da API do TMDB
   };
 
   //e = evento | ao clicar ou digitar acontece algo
@@ -49,6 +51,11 @@ const App = () => {
         <img onClick={() => searchMovies(search)} src={Lupa} alt="" />
       </div>
 
+      <div className="menu">
+        <img src={Menu} alt="" />
+
+      </div>
+
       {movies?.length > 0 ? (
         <div className="container">
           {movies.map((movie, index) => (
@@ -59,10 +66,7 @@ const App = () => {
         <h2 className="empty">😢 Filme não encontrado 😢</h2>
       )}
 
-      <Footer
-        devName={" Limazxzn"}
-        devLink={"https://github.com/Limazxz"}
-      />
+      <Footer devName={" Limazxzn"} devLink={"https://github.com/Limazxz"} />
     </div>
   );
 };

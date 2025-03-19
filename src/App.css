@@ -24,6 +24,12 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative; /* Define o contexto de posicionamento para elementos filhos absolutos */
+  padding: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .logo {
@@ -118,4 +124,16 @@ body {
     width: 100%;
     margin: 1rem;
   }
+}
+.menu {
+  position: absolute; /* Posiciona o menu em relação ao #app */
+  top: 1rem; /* Distância do topo */
+  right: 1rem; /* Distância da direita */
+  cursor: pointer; /* Mostra o cursor de "mão" ao passar o mouse */
+  z-index: 10; /* Garante que o menu fique acima de outros elementos */
+}
+
+.menu img {
+  width: 110px; /* Ajuste o tamanho do ícone, se necessário */
+  height: 110px;
 }
