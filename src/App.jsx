@@ -7,7 +7,7 @@ import MovieCard from "./components/moviecard/MovieCard";
 import Logo from "./assets/devflix.png";
 import Lupa from "./assets/search.svg";
 import Menu from "./assets/menu-outline.svg";
-import Cadastro from "./components/cadastro/Cadastro";
+import axios from "axios";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -15,19 +15,25 @@ const App = () => {
   const [menuVisible, setMenuVisible] = useState(false); // Estado para controlar a visibilidade do menu
 
   const apiKey = "9506a07caf1cb498a79d6bd505c6b62e";
-  const apiUrl = `https://api.themoviedb.org/3/movie/550?api_key=${apiKey}`;
-
+  const apiUrl = `https://api.themoviedb.org/3`;
   useEffect(() => {
     searchMovies("Harry Potter");
   }, []);
 
-  const searchMovies = async (title) => {
-    const response = await fetch(
-      `${apiUrl}/search/movie?api_key=${apiKey}&query=${title}`
-    );
-    const data = await response.json();
-    setMovies(data.results);
-  };
+  async function searchMovies() {
+    const response = await axios.get(`${apiUrl}/movie/popular`, {
+      params: {
+        api_key: apiKey,
+        language: "pt-BR",
+        page: 1,
+      },
+    });
+    //const data = await response.json();
+    var data = response.data.results;
+    console.log(data);
+    //return data;
+    setMovies(data); // Exibe os filmes populares
+  }
 
   const handleKeyPress = (e) => {
     e.key === "Enter" && searchMovies(search);
