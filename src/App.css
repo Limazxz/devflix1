@@ -222,3 +222,39 @@ body {
 .login-button button:hover {
   background-color: #b6ffbc; /* Cor de fundo mais escura ao passar o mouse */
 }
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.logo img {
+  width: 150px; /* Ajuste o tamanho da logo */
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem; /* Espaçamento entre o input e o botão */
+  margin-bottom: 2rem;
+}
+
+.search input {
+  width: 300px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.search button img {
+  width: 20px; /* Tamanho do ícone da lupa */
+  height: 20px;
+}

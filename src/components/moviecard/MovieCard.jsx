@@ -2,7 +2,7 @@ import { useState } from "react";
 import MovieDescription from "../moviedescription/MovieDescription";
 import styles from "./MovieCard.module.css";
 
-const MovieCard = (props) => {
+const MovieCard = ({ title, poster, type, year, apiUrl, movieID }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
@@ -13,23 +13,23 @@ const MovieCard = (props) => {
     <>
       <div className={styles.movie} onClick={toggleModal}>
         <div>
-          <p>{props.Year}</p>
+          <p>{year}</p>
         </div>
 
         <div>
-          <img src={props.Poster} alt="" />
+          <img src={poster} alt={`Poster de ${title}`} />
         </div>
 
         <div>
-          <span>{props.Type}</span>
-          <h3>{props.Title}</h3>
+          <span>{type}</span>
+          <h3>{title}</h3>
         </div>
       </div>
       {isModalOpen && (
         <MovieDescription
-          apiUrl={props.apiUrl}
-          movieID={props.imdbID}
-          click={toggleModal}
+          apiUrl={apiUrl} // Passa a URL base da API
+          movieID={movieID} // Passa o ID do filme para buscar os detalhes
+          click={toggleModal} // Fecha o modal ao clicar fora
         />
       )}
     </>

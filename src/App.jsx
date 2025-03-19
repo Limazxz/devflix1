@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"; // Importa useState e useEffect
 import "./App.css";
 import Footer from "./components/footer/Footer";
 import MovieCard from "./components/moviecard/MovieCard";
@@ -10,47 +10,74 @@ import Menu from "./assets/menu-outline.svg";
 import axios from "axios";
 
 const App = () => {
-  const [search, setSearch] = useState("");
-  const [movies, setMovies] = useState([]);
-  const [menuVisible, setMenuVisible] = useState(false); // Estado para controlar a visibilidade do menu
+  const [search, setSearch] = useState(""); // Estado para o termo de busca
+  const [movies, setMovies] = useState([]); // Estado para os filmes encontrados
+  const [menuVisible, setMenuVisible] = useState(false); // Estado para visibilidade do menu
 
   const apiKey = "9506a07caf1cb498a79d6bd505c6b62e";
   const apiUrl = `https://api.themoviedb.org/3`;
-  useEffect(() => {
-    searchMovies("Harry Potter");
-  }, []);
 
-  async function searchMovies() {
-    const response = await axios.get(`${apiUrl}/movie/popular`, {
-      params: {
-        api_key: apiKey,
-        language: "pt-BR",
-        page: 1,
-      },
-    });
-    //const data = await response.json();
-    var data = response.data.results;
-    console.log(data);
-    //return data;
-    setMovies(data); // Exibe os filmes populares
-  }
+  // Função para buscar filmes com base no termo de busca
+  const searchMovies = async (query) => {
+    if (!query) return; // Não faz nada se a pesquisa estiver vazia
+    try {
+      const response = await axios.get(`${apiUrl}/search/movie`, {
+        params: {
+          api_key: apiKey,
+          language: "pt-BR",
+          query: query,
+        },
+      });
+      setMovies(response.data.results || []); // Atualiza os filmes encontrados
+    } catch (error) {
+      console.error("Erro ao buscar filmes:", error);
+    }
+  };
+
+  // Função para buscar filmes populares ao carregar o componente
+  const fetchPopularMovies = async () => {
+    try {
+      const response = await axios.get(`${apiUrl}/movie/popular`, {
+        params: {
+          api_key: apiKey,
+          language: "pt-BR",
+        },
+      });
+      setMovies(response.data.results || []); // Atualiza os filmes populares
+    } catch (error) {
+      console.error("Erro ao buscar filmes populares:", error);
+    }
+  };
+
+  // useEffect para carregar filmes populares ao montar o componente
+  useEffect(() => {
+    fetchPopularMovies();
+  }, []); // Executa apenas uma vez ao montar o componente
 
   const handleKeyPress = (e) => {
-    e.key === "Enter" && searchMovies(search);
+    if (e.key === "Enter") {
+      searchMovies(search); // Chama a função de busca ao pressionar Enter
+    }
   };
 
   return (
     <div id="app">
-      <img className="logo" src={Logo} alt="" />
+      {/* Exibe a logo acima da barra de pesquisa */}
+      <div className="logo">
+        <img src={Logo} alt="DevFlix Logo" />
+      </div>
 
       <div className="search">
         <input
-          onKeyDown={handleKeyPress}
-          onChange={(e) => setSearch(e.target.value)}
           type="text"
           placeholder="Pesquise por filmes"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)} // Atualiza o estado da pesquisa
+          onKeyDown={handleKeyPress} // Detecta a tecla Enter
         />
-        <img onClick={() => searchMovies(search)} src={Lupa} alt="" />
+        <button onClick={() => searchMovies(search)}>
+          <img src={Lupa} alt="Buscar" /> {/* Ícone da lupa */}
+        </button>
       </div>
 
       <div className="menu" onClick={() => setMenuVisible(!menuVisible)}>
@@ -76,24 +103,30 @@ const App = () => {
           </div>
         </div>
       )}
-      <div className="register-button">
-        <button onClick={() => alert("Cadastro Concluído!")}>Cadastro</button>
-      </div>
 
-      <div className="login-button">
-        <button onClick={() => alert("Login Concluído!")}>Login</button>
-      </div>
       {movies?.length > 0 ? (
         <div className="container">
           {movies.map((movie, index) => (
-            <MovieCard key={index} apiUrl={apiUrl} {...movie} />
+            <MovieCard
+              key={index}
+              title={movie.title}
+              poster={
+                movie.poster_path
+                  ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                  : "https://via.placeholder.com/500x750?text=No+Image"
+              }
+              type={movie.media_type || "Filme"}
+              year={movie.release_date?.split("-")[0] || "Ano desconhecido"}
+              apiUrl={apiUrl}
+              movieID={movie.id}
+            />
           ))}
         </div>
       ) : (
         <h2 className="empty">😢 Filme não encontrado 😢</h2>
       )}
 
-      <Footer devName={" Limazxzn"} devLink={"https://github.com/Limazxz"} />
+      <Footer devName={"Limazxzn"} devLink={"https://github.com/Limazxz"} />
     </div>
   );
 };
