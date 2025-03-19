@@ -11,28 +11,23 @@ import Menu from "./assets/menu-outline.svg";
 const App = () => {
   const [search, setSearch] = useState("");
   const [movies, setMovies] = useState([]);
+  const [menuVisible, setMenuVisible] = useState(false); // Estado para controlar a visibilidade do menu
 
-  //Utilizando chave de API do arquivo .env
-  // const apiKey = import.meta.env.VITE_OMDB_API_KEY;
-  const apiKey = "e4d577fa";
-  const apiUrl = `https://omdbapi.com/?apikey=${apiKey}`;
+  const apiKey = "9506a07caf1cb498a79d6bd505c6b62e";
+  const apiUrl = `https://api.themoviedb.org/3/movie/550?api_key=${apiKey}`;
 
-  //Alimentando com dados para não ficar nulo com useEffect
   useEffect(() => {
-    searchMovies("Batman");
+    searchMovies("Harry Potter");
   }, []);
 
-  //criando a conexão com a API e trazendo informações
   const searchMovies = async (title) => {
     const response = await fetch(
       `${apiUrl}/search/movie?api_key=${apiKey}&query=${title}`
     );
     const data = await response.json();
-
-    setMovies(data.results); // Ajuste para `results` conforme o retorno da API do TMDB
+    setMovies(data.results);
   };
 
-  //e = evento | ao clicar ou digitar acontece algo
   const handleKeyPress = (e) => {
     e.key === "Enter" && searchMovies(search);
   };
@@ -51,10 +46,29 @@ const App = () => {
         <img onClick={() => searchMovies(search)} src={Lupa} alt="" />
       </div>
 
-      <div className="menu">
-        <img src={Menu} alt="" />
-
+      <div className="menu" onClick={() => setMenuVisible(!menuVisible)}>
+        <img src={Menu} alt="Menu" />
       </div>
+
+      {menuVisible && ( // Renderiza os itens do menu apenas se menuVisible for true
+        <div
+        className="menu-backdrop"
+        onClick={() => setMenuVisible(false)} // Fecha o menu ao clicar fora
+      >
+        <div
+          className="menu-items"
+          onClick={(e) => e.stopPropagation()} // Impede o clique dentro do menu de fechar o menu
+        >
+          <ul>
+            <li>Canais</li>
+            <li>Canais Pagos</li>
+            <li>Animes</li>
+            <li>Séries</li>
+            <li>Gêneros</li>
+          </ul>
+        </div>
+      </div>
+      )}
 
       {movies?.length > 0 ? (
         <div className="container">
