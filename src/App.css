@@ -127,8 +127,8 @@ body {
 }
 .menu {
   position: absolute; /* Posiciona o menu em relação ao #app */
-  top: 1rem; /* Distância do topo */
-  right: 1rem; /* Distância da direita */
+  top: 0rem; /* Distância do topo */
+  right: 0rem; /* Distância da direita */
   z-index: 10; /* Garante que o menu fique acima de outros elementos */
   display: flex;
   align-items: center;
@@ -175,4 +175,50 @@ body {
 
 .menu-items li:hover {
   color: #007bff; /* Cor ao passar o mouse */
+}
+.register-button {
+  position: absolute; /* Posiciona o botão em relação ao contêiner pai */
+  top: 1rem; /* Distância do topo */
+  left: 1rem; /* Distância da esquerda */
+  z-index: 10; /* Garante que o botão fique acima de outros elementos */
+}
+
+.register-button button {
+  background-color: #d9d9d9; /* Cor de fundo azul */
+  color: #000000; /* Cor do texto branca */
+  border: none; /* Remove a borda */
+  border-radius: 8px; /* Bordas arredondadas */
+  padding: 0.5rem 1rem; /* Espaçamento interno */
+  font-size: 1rem; /* Tamanho da fonte */
+  font-weight: 600; /* Peso da fonte */
+  cursor: pointer; /* Mostra o cursor de "mão" ao passar o mouse */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+  transition: background-color 0.3s ease; /* Transição suave para hover */
+}
+
+.register-button button:hover {
+  background-color: #7bbbff; /* Cor de fundo mais escura ao passar o mouse */
+}
+.login-button {
+  position: absolute; /* Posiciona o botão em relação ao contêiner pai */
+  top: 1rem; /* Distância do topo */
+  left: 9rem; /* Distância da esquerda */
+  z-index: 10; /* Garante que o botão fique acima de outros elementos */
+}
+
+.login-button button {
+  background-color: #d9d9d9; /* Cor de fundo verde */
+  color: #000000; /* Cor do texto branca */
+  border: none; /* Remove a borda */
+  border-radius: 8px; /* Bordas arredondadas */
+  padding: 0.5rem 1rem; /* Espaçamento interno */
+  font-size: 1rem; /* Tamanho da fonte */
+  font-weight: 600; /* Peso da fonte */
+  cursor: pointer; /* Mostra o cursor de "mão" ao passar o mouse */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+  transition: background-color 0.3s ease; /* Transição suave para hover */
+}
+
+.login-button button:hover {
+  background-color: #b6ffbc; /* Cor de fundo mais escura ao passar o mouse */
 }

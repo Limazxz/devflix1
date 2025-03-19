@@ -7,6 +7,7 @@ import MovieCard from "./components/moviecard/MovieCard";
 import Logo from "./assets/devflix.png";
 import Lupa from "./assets/search.svg";
 import Menu from "./assets/menu-outline.svg";
+import Cadastro from "./components/cadastro/Cadastro";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -52,24 +53,30 @@ const App = () => {
 
       {menuVisible && ( // Renderiza os itens do menu apenas se menuVisible for true
         <div
-        className="menu-backdrop"
-        onClick={() => setMenuVisible(false)} // Fecha o menu ao clicar fora
-      >
-        <div
-          className="menu-items"
-          onClick={(e) => e.stopPropagation()} // Impede o clique dentro do menu de fechar o menu
+          className="menu-backdrop"
+          onClick={() => setMenuVisible(false)} // Fecha o menu ao clicar fora
         >
-          <ul>
-            <li>Canais</li>
-            <li>Canais Pagos</li>
-            <li>Animes</li>
-            <li>Séries</li>
-            <li>Gêneros</li>
-          </ul>
+          <div
+            className="menu-items"
+            onClick={(e) => e.stopPropagation()} // Impede o clique dentro do menu de fechar o menu
+          >
+            <ul>
+              <li>Canais</li>
+              <li>Canais Pagos</li>
+              <li>Animes</li>
+              <li>Séries</li>
+              <li>Gêneros</li>
+            </ul>
+          </div>
         </div>
-      </div>
       )}
+      <div className="register-button">
+        <button onClick={() => alert("Cadastro Concluído!")}>Cadastro</button>
+      </div>
 
+      <div className="login-button">
+        <button onClick={() => alert("Login Concluído!")}>Login</button>
+      </div>
       {movies?.length > 0 ? (
         <div className="container">
           {movies.map((movie, index) => (
