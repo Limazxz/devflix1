@@ -13,9 +13,19 @@ const App = () => {
   const [search, setSearch] = useState(""); // Estado para o termo de busca
   const [movies, setMovies] = useState([]); // Estado para os filmes encontrados
   const [menuVisible, setMenuVisible] = useState(false); // Estado para visibilidade do menu
+  const [isSearchDone, setIsSearchDone] = useState(false); // Estado para controlar se a pesquisa foi feita
+  const [selectedMovie, setSelectedMovie] = useState(null); // Estado para o filme selecionado
 
   const apiKey = "9506a07caf1cb498a79d6bd505c6b62e";
   const apiUrl = `https://api.themoviedb.org/3`;
+
+  const handleMovieClick = (movie) => {
+    setSelectedMovie(movie); // Define o filme selecionado
+  };
+
+  const closeMovieDescription = () => {
+    setSelectedMovie(null); // Fecha o quadro de descrição
+  };
 
   // Função para buscar filmes com base no termo de busca
   const searchMovies = async (query) => {
@@ -29,6 +39,7 @@ const App = () => {
         },
       });
       setMovies(response.data.results || []); // Atualiza os filmes encontrados
+      setIsSearchDone(true); // Marca que a pesquisa foi feita
     } catch (error) {
       console.error("Erro ao buscar filmes:", error);
     }
@@ -63,8 +74,16 @@ const App = () => {
   return (
     <div id="app">
       {/* Exibe a logo acima da barra de pesquisa */}
-      <div className="logo">
+      <div className={`logo ${isSearchDone ? "small" : "large"}`}>
         <img src={Logo} alt="DevFlix Logo" />
+      </div>
+
+      {/* Botões de Cadastro e Login */}
+      <div className="register-button">
+        <button>Cadastro</button>
+      </div>
+      <div className="login-button">
+        <button>Login</button>
       </div>
 
       <div className="search">
@@ -84,7 +103,7 @@ const App = () => {
         <img src={Menu} alt="Menu" />
       </div>
 
-      {menuVisible && ( // Renderiza os itens do menu apenas se menuVisible for true
+      {menuVisible && (
         <div
           className="menu-backdrop"
           onClick={() => setMenuVisible(false)} // Fecha o menu ao clicar fora
@@ -119,11 +138,39 @@ const App = () => {
               year={movie.release_date?.split("-")[0] || "Ano desconhecido"}
               apiUrl={apiUrl}
               movieID={movie.id}
+              onClick={() => handleMovieClick(movie)} // Define o clique no filme
             />
           ))}
         </div>
       ) : (
         <h2 className="empty">😢 Filme não encontrado 😢</h2>
+      )}
+
+      {/* Quadro de descrição do filme */}
+      {selectedMovie && (
+        <>
+          <div
+            className="movie-description-backdrop"
+            onClick={closeMovieDescription}
+          ></div>
+          <div className="movie-description">
+            <button
+              className="movie-description-close"
+              onClick={closeMovieDescription}
+            >
+              &times;
+            </button>
+            <h2>{selectedMovie.title}</h2>
+            <p>{selectedMovie.overview || "Descrição não disponível."}</p>
+            <p>
+              <strong>Data de lançamento:</strong>{" "}
+              {selectedMovie.release_date || "Desconhecida"}
+            </p>
+            <p>
+              <strong>Nota:</strong> {selectedMovie.vote_average || "N/A"}
+            </p>
+          </div>
+        </>
       )}
 
       <Footer devName={"Limazxzn"} devLink={"https://github.com/Limazxz"} />
