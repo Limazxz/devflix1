@@ -8,15 +8,32 @@ import Logo from "./assets/devflix.png";
 import Lupa from "./assets/search.svg";
 import linkedin from "./assets/logo-linkedin-2.svg"; // Importa o ícone do LinkedIn
 import axios from "axios";
+import MoonIcon from "./assets/moon-outline.svg"; // Ícone de lua
+import SunIcon from "./assets/sunny-outline.svg"; // Ícone de sol
 
 const App = () => {
   const [search, setSearch] = useState(""); // Estado para o termo de busca
   const [movies, setMovies] = useState([]); // Estado para os filmes encontrados
   const [isSearchDone, setIsSearchDone] = useState(false); // Estado para controlar se a pesquisa foi feita
   const [selectedMovie, setSelectedMovie] = useState(null); // Estado para o filme selecionado
+  const [theme, setTheme] = useState(
+    window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+  ); // Estado para o tema atual
 
   const apiKey = "9506a07caf1cb498a79d6bd505c6b62e";
   const apiUrl = `https://api.themoviedb.org/3`;
+
+  const mudaTema = () => {
+    const tema = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+
+    document.documentElement.setAttribute("data-bs-theme", tema);
+  }
+
+  mudaTema(); // Chama a função ao carregar o site
+
+  window
+  .matchMedia("(prefers-color-scheme: dark)")
+  .addEventListener("change", mudaTema); // Atualiza o tema ao mudar
 
   const handleMovieClick = (movie) => {
     setSelectedMovie(movie); // Define o filme selecionado
@@ -63,8 +80,26 @@ const App = () => {
     }
   };
 
+  const toggleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    document.documentElement.setAttribute("data-bs-theme", newTheme);
+  };
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-bs-theme", theme);
+  }, [theme]);
+
   return (
     <div id="app">
+      {/* Botão para alternar o tema */}
+      <button className="theme-toggle" onClick={toggleTheme}>
+        <img
+          src={theme === "dark" ? SunIcon : MoonIcon}
+          alt={theme === "dark" ? "Light Mode" : "Dark Mode"}
+        />
+      </button>
+
       {/* Exibe a logo acima da barra de pesquisa */}
       <div className={`logo ${isSearchDone ? "small" : "large"}`}>
         <img src={Logo} alt="DevFlix Logo" />

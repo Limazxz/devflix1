@@ -1,8 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-  --font-raleway: "Raleway", sans-serif;
+  --font-raleway: "Raleway", sans-serif !important;
+  --bs-body-bg: #f0f0f0;
 }
+[data-bs-theme="dark"]{
+  --bs-body-bg: #1f1f1f !important;
+}
+  
 
 * {
   margin: 0;
@@ -11,12 +16,20 @@
 }
 
 body {
-  font-family: var(--font-raleway);
-  background: url(img/uwp3600696.png);
-  background-size:cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 }
+
+/* Keyframes para animar o gradiente */
+/* @keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+} */
 
 #app {
   padding: 4em;
@@ -52,9 +65,9 @@ body {
   justify-content: center;
   padding: 1.5rem 1.75rem;
   border-radius: 4rem;
-  background: #1f2123;
-  box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
-  -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
+  background: transparent;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .search input {
@@ -62,8 +75,8 @@ body {
   border: none;
   padding-right: 1rem;
   outline: none;
-  color: #a1a1a1;
-  background: #1f2123;
+  color: #000000;
+  background: transparent;
   font-size: 1.5rem;
   font-weight: 500;
 }
@@ -347,42 +360,16 @@ body {
 
 .watch-button:hover {
   background-color: #a3a3a3;
-}/* Tema claro */
-/* Tema claro */
-.theme-switcher {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem;
-  position: absolute;
-  top: 0rem;
-  left: 15rem;
-  z-index: 10;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%; /* Torna o fundo circular */
-  background-color: var(--theme-circle-bg); /* Cor do círculo */
-  transition: background-color 0.3s ease; /* Transição suave na troca de tema */
-}
-
-/* Estilo do ícone SVG */
-.theme-switcher img {
-  width: 24px;
-  height: 24px;
-  transition: transform 0.3s ease; /* Transição suave para o ícone */
 }
 
 /* Tema claro */
 .light {
-  --theme-circle-bg: #f0f0f0; /* Cor do círculo no tema claro */
   background-color: #ffffff;
   color: #000000;
 }
 
 /* Tema escuro */
 .dark {
-  --theme-circle-bg: #333333; /* Cor do círculo no tema escuro */
   background-color: #1f1f1f;
   color: #ffffff;
 }
