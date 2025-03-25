@@ -135,8 +135,8 @@ body {
   color:transparent;
 }
 .menu img {
-  width: 110px; /* Ajuste o tamanho do ícone, se necessário */
-  height: 110px;
+  width: 100px; /* Ajuste o tamanho do ícone, se necessário */
+  height: 100px;
 }
 .menu-items {
   position: relative;
@@ -194,6 +194,7 @@ body {
   cursor: pointer; /* Mostra o cursor de "mão" ao passar o mouse */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
   transition: background-color 0.3s ease; /* Transição suave para hover */
+  
 }
 
 .register-button button:hover {
@@ -204,6 +205,7 @@ body {
   top: 1rem; /* Distância do topo */
   left: 9rem; /* Distância da esquerda */
   z-index: 10; /* Garante que o botão fique acima de outros elementos */
+  
 }
 
 .login-button button {
@@ -259,7 +261,7 @@ body {
   height: 20px;
 }
 .logo.large img {
-  width: 300px;
+  max-width: 400px;
   height: auto;
   transition: all 0.3s ease;
 }
@@ -269,56 +271,60 @@ body {
   height: auto;
   transition: all 0.3s ease;
 }
+/* Estilo do MovieDescription */
 .movie-description {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
+  padding: 1rem;
+  width: 90%; /* Ajusta o MovieDescription para ocupar 90% da largura da tela */
+  max-width: 400px; /* Define um tamanho máximo */
   z-index: 1000;
-  width: 90%; /* Responsivo: ocupa 90% da largura da tela */
-  max-width: 600px; /* Limita o tamanho máximo */
-  max-height: 80%; /* Limita a altura máxima */
-  overflow-y: auto; /* Adiciona rolagem se o conteúdo for maior que a altura */
 }
 
-/* Fundo escuro para o modal */
-.movie-description-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
-  z-index: 999;
-  
-}
-
-/* Botão de fechar */
+/* Estilo do botão "X" */
 .movie-description-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 30px; /* Largura do círculo */
-  height: 30px; /* Altura do círculo */
-  background: #ff4d4d; /* Cor de fundo do botão */
-  color: white; /* Cor do "X" */
-  border: none; /* Remove a borda */
-  border-radius: 50%; /* Torna o botão circular */
-  font-size: 1.2rem; /* Tamanho do "X" */
-  font-weight: bold; /* Deixa o "X" em negrito */
-  cursor: pointer; /* Mostra o cursor de "mão" ao passar o mouse */
-  display: flex; /* Centraliza o "X" */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra */
-  transition: background-color 0.3s ease; /* Transição suave ao passar o mouse */
+  top: 0.5rem; /* Distância do topo */
+  right: 0.5rem; /* Distância da direita */
+  background: none;
+  border: none;
+  font-size: 1.5rem; /* Tamanho do ícone "X" */
+  font-weight: bold;
+  color: #333; /* Cor do botão */
+  cursor: pointer;
+  z-index: 1100; /* Garante que o botão fique acima do conteúdo */
+  transition: color 0.3s ease; /* Transição suave para hover */
 }
+
 .movie-description-close:hover {
-  background: #ff1a1a; /* Cor mais escura ao passar o mouse */
+  color: #ff0000; /* Cor ao passar o mouse */
+}
+
+/* Responsividade para o MovieDescription */
+@media screen and (max-width: 768px) {
+  .movie-description {
+    width: 95%; /* Ajusta o MovieDescription para ocupar quase toda a largura */
+  }
+
+  .movie-description-close {
+    font-size: 1.2rem; /* Reduz o tamanho do botão "X" em telas menores */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .movie-description {
+    width: 100%; /* O MovieDescription ocupa toda a largura */
+    max-width: 350px; /* Define um tamanho máximo */
+  }
+
+  .movie-description-close {
+    font-size: 1rem; /* Reduz ainda mais o tamanho do botão "X" */
+  }
 }
 .movie-item {
   display: flex;

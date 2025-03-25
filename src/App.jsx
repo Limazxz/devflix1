@@ -158,30 +158,30 @@ const App = () => {
 
       {/* Quadro de descrição do filme */}
       {selectedMovie && (
-        <>
-          <div
-            className="movie-description-backdrop"
-            onClick={closeMovieDescription}
-          ></div>
-          <div className="movie-description">
-            <button
-              className="movie-description-close"
-              onClick={closeMovieDescription}
-            >
-              &times;
-            </button>
-            <h2>{selectedMovie.title}</h2>
-            <p>{selectedMovie.overview || "Descrição não disponível."}</p>
-            <p>
-              <strong>Data de lançamento:</strong>{" "}
-              {selectedMovie.release_date || "Desconhecida"}
-            </p>
-            <p>
-              <strong>Nota:</strong> {selectedMovie.vote_average || "N/A"}
-            </p>
-          </div>
-        </>
-      )}
+  <>
+    <div
+      className="movie-description-backdrop"
+      onClick={closeMovieDescription}
+    ></div>
+    <div className="movie-description">
+      <button
+        className="movie-description-close"
+        onClick={closeMovieDescription}
+      >
+        &times; {/* Ícone do botão "X" */}
+      </button>
+      <h2>{selectedMovie.title}</h2>
+      <p>{selectedMovie.overview || "Descrição não disponível."}</p>
+      <p>
+        <strong>Data de lançamento:</strong>{" "}
+        {selectedMovie.release_date || "Desconhecida"}
+      </p>
+      <p>
+        <strong>Nota:</strong> {selectedMovie.vote_average || "N/A"}
+      </p>
+    </div>
+  </>
+)}
 
       <Footer devName={" Limazxzn"} devLink={"https://github.com/Limazxz"} />
     </div>
