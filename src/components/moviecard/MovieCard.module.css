@@ -1,6 +1,6 @@
 .movie {
-  width: 310px;
-  height: 460px;
+  width: 200px;
+  height: 300px;
   margin: 1.5rem;
   position: relative;
   overflow: hidden;
@@ -56,6 +56,8 @@
 .movie div:nth-of-type(3) h3 {
   margin-top: 5px;
   color: #f9d3b4;
+  font-size: 19px;
+  font-weight: 500;
 }
 
 .movie:hover div:nth-of-type(2) {
