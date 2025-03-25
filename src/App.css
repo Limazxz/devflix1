@@ -135,8 +135,8 @@ body {
   color:transparent;
 }
 .menu img {
-  width: 100px; /* Ajuste o tamanho do ícone, se necessário */
-  height: 100px;
+  width: 90px; /* Ajuste o tamanho do ícone, se necessário */
+  height: 90px;
 }
 .menu-items {
   position: relative;
