@@ -136,18 +136,11 @@ const App = () => {
       )}
 
       {/* Rodapé com o ícone do LinkedIn */}
-      <Footer devName={"Limazxzn"} devLink={"https://github.com/Limazxz"}>
-        <a
-          href="https://www.linkedin.com/in/pedro-silva-de-lima-083562313/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src={linkedin}
-            alt="LinkedIn"
-            style={{ width: "30px", height: "30px", marginLeft: "10px" }}
-          />
+      <Footer devName={" Limazxzn"} devLink={"https://github.com/Limazxz"}>
+        <a href="https://www.linkedin.com/in/pedro-silva-de-lima-083562313/">
+          <img src={linkedin} alt="LinkedIn" /> {/* Ícone do LinkedIn */}
         </a>
+      
       </Footer>
     </div>
   );
