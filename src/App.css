@@ -341,4 +341,39 @@ body {
 
 .watch-button:hover {
   background-color: #a3a3a3;
+}/* Tema claro */
+/* Tema claro */
+.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Tema escuro */
+.dark {
+  background-color: #1f1f1f;
+  color: #ffffff;
+}
+
+/* Estilo do botão de troca de tema */
+.theme-switcher {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.theme-switcher img {
+  width: 30px;
+  height: 30px;
+  color: #ffffff;
+}
+.theme-switcher{
+  position: absolute;
+  top: 1rem;
+  right: 10rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  color:transparent;
 }

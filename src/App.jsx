@@ -7,6 +7,8 @@ import MovieCard from "./components/moviecard/MovieCard";
 import Logo from "./assets/devflix.png";
 import Lupa from "./assets/search.svg";
 import Menu from "./assets/menu-outline.svg";
+import lua from "./assets/moon-outline.svg";
+import sol from "./assets/sunny-outline.svg";
 import axios from "axios";
 
 const App = () => {
@@ -26,6 +28,8 @@ const App = () => {
   const closeMovieDescription = () => {
     setSelectedMovie(null); // Fecha o quadro de descrição
   };
+
+const [isLight, setIsLight] = useState(false); // Estado para o tema (light ou dark)
 
   // Função para buscar filmes com base no termo de busca
   const searchMovies = async (query) => {
@@ -84,6 +88,11 @@ const App = () => {
       </div>
       <div className="login-button">
         <button>Login</button>
+      </div>
+
+      {/* Botão para alternar entre os temas */}
+      <div className="theme-switcher" onClick={() => setIsLight(!isLight)}>
+        <img src={isLight ? lua : sol} alt="Tema" />
       </div>
 
       <div className="search">
@@ -173,7 +182,7 @@ const App = () => {
         </>
       )}
 
-      <Footer devName={"Limazxzn"} devLink={"https://github.com/Limazxz"} />
+      <Footer devName={" Limazxzn"} devLink={"https://github.com/Limazxz"} />
     </div>
   );
 };
