@@ -35,6 +35,7 @@ const App = () => {
   const searchMovies = async (query) => {
     if (!query) return; // Não faz nada se a pesquisa estiver vazia
     try {
+      setMovies([]); // Zera os MovieCards antes de realizar a nova busca
       const response = await axios.get(`${apiUrl}/search/movie`, {
         params: {
           api_key: apiKey,
