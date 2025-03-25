@@ -343,37 +343,40 @@ body {
   background-color: #a3a3a3;
 }/* Tema claro */
 /* Tema claro */
-.light {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-/* Tema escuro */
-.dark {
-  background-color: #1f1f1f;
-  color: #ffffff;
-}
-
-/* Estilo do botão de troca de tema */
 .theme-switcher {
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 1rem;
+  position: absolute;
+  top: 0rem;
+  left: 15rem;
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Torna o fundo circular */
+  background-color: var(--theme-circle-bg); /* Cor do círculo */
+  transition: background-color 0.3s ease; /* Transição suave na troca de tema */
 }
 
+/* Estilo do ícone SVG */
 .theme-switcher img {
-  width: 30px;
-  height: 30px;
-  color: #ffffff;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease; /* Transição suave para o ícone */
 }
-.theme-switcher{
-  position: absolute;
-  top: 1rem;
-  right: 10rem;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  color:transparent;
+
+/* Tema claro */
+.light {
+  --theme-circle-bg: #f0f0f0; /* Cor do círculo no tema claro */
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Tema escuro */
+.dark {
+  --theme-circle-bg: #333333; /* Cor do círculo no tema escuro */
+  background-color: #1f1f1f;
+  color: #ffffff;
 }

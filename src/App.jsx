@@ -29,7 +29,7 @@ const App = () => {
     setSelectedMovie(null); // Fecha o quadro de descrição
   };
 
-const [isLight, setIsLight] = useState(false); // Estado para o tema (light ou dark)
+  const [isLight, setIsLight] = useState(false); // Estado para o tema (light ou dark)
 
   // Função para buscar filmes com base no termo de busca
   const searchMovies = async (query) => {
@@ -92,7 +92,7 @@ const [isLight, setIsLight] = useState(false); // Estado para o tema (light ou d
 
       {/* Botão para alternar entre os temas */}
       <div className="theme-switcher" onClick={() => setIsLight(!isLight)}>
-        <img src={isLight ? lua : sol} alt="Tema" />
+        <img src={isLight ? lua : sol} alt="Tema" /> {/* Mostra lua ou sol */}
       </div>
 
       <div className="search">
