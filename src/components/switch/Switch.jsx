@@ -1,14 +1,19 @@
-import styles from './Switch.module.css'
+import styles from './Switch.module.css';
 
-const Switch = ({troca, isLight}) => {
+const Switch = ({ onChange, checked, checkedIcon, uncheckedIcon, offColor, onColor }) => {
   return (
-    <div  className={isLight ? styles.light : undefined}>
-    <div onClick={troca} id={styles.switch}>
-      <button></button>
-      <span></span>
+    <div
+      className={styles.switchContainer}
+      onClick={onChange}
+      style={{
+        backgroundColor: checked ? onColor : offColor,
+      }}
+    >
+      <div className={styles.switchButton}>
+        {checked ? checkedIcon : uncheckedIcon}
+      </div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
-export default Switch
+export default Switch;

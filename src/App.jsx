@@ -10,6 +10,7 @@ import linkedin from "./assets/logo-linkedin-2.svg"; // Importa o ícone do Link
 import axios from "axios";
 import MoonIcon from "./assets/moon-outline.svg"; // Ícone de lua
 import SunIcon from "./assets/sunny-outline.svg"; // Ícone de sol
+import Switch from "./components/switch/Switch"; // Importa o switch atualizado
 
 const App = () => {
   const [search, setSearch] = useState(""); // Estado para o termo de busca
@@ -24,16 +25,18 @@ const App = () => {
   const apiUrl = `https://api.themoviedb.org/3`;
 
   const mudaTema = () => {
-    const tema = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    const tema = window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
 
     document.documentElement.setAttribute("data-bs-theme", tema);
-  }
+  };
 
   mudaTema(); // Chama a função ao carregar o site
 
   window
-  .matchMedia("(prefers-color-scheme: dark)")
-  .addEventListener("change", mudaTema); // Atualiza o tema ao mudar
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", mudaTema); // Atualiza o tema ao mudar
 
   const handleMovieClick = (movie) => {
     setSelectedMovie(movie); // Define o filme selecionado
@@ -92,13 +95,17 @@ const App = () => {
 
   return (
     <div id="app">
-      {/* Botão para alternar o tema */}
-      <button className="theme-toggle" onClick={toggleTheme}>
-        <img
-          src={theme === "dark" ? SunIcon : MoonIcon}
-          alt={theme === "dark" ? "Light Mode" : "Dark Mode"}
+      {/* Switch para alternar o tema no canto superior direito */}
+      <div className="theme-switch">
+        <Switch
+          onChange={toggleTheme}
+          checked={theme === "dark"}
+          checkedIcon={<img src={MoonIcon} alt="Dark Mode" />}
+          uncheckedIcon={<img src={SunIcon} alt="Light Mode" />}
+          offColor="#f5f5f5"
+          onColor="#222"
         />
-      </button>
+      </div>
 
       {/* Exibe a logo acima da barra de pesquisa */}
       <div className={`logo ${isSearchDone ? "small" : "large"}`}>
@@ -175,7 +182,6 @@ const App = () => {
         <a href="https://www.linkedin.com/in/pedro-silva-de-lima-083562313/">
           <img src={linkedin} alt="LinkedIn" /> {/* Ícone do LinkedIn */}
         </a>
-      
       </Footer>
     </div>
   );
