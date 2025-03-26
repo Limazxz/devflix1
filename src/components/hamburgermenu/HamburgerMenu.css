@@ -15,8 +15,8 @@
   position: absolute;
   top: 40px;
   left: 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: #6B6B6B;
+  border: 1px solid #000000;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
@@ -34,10 +34,14 @@
 
 .menu-dropdown a {
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
   font-weight: bold;
 }
 
 .menu-dropdown a:hover {
-  color: #007bff;
+  color: #ffffff;
+}
+.menu-dropdown button{
+  color: #ffffff;
+  font-weight: bold;
 }

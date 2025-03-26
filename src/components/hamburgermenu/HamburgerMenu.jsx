@@ -9,6 +9,11 @@ const HamburgerMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleRefresh = () => {
+    window.scrollTo(0, 0); // Volta para o topo da página
+    window.location.reload(); // Recarrega a página
+  };
+
   return (
     <div className="hamburger-menu-container">
       <img
@@ -22,7 +27,7 @@ const HamburgerMenu = () => {
           <ul>
             <li><a href="#home">Filmes</a></li>
             <li><a href="#popular">Séries</a></li>
-            <li><a href="#popular">Inicío</a></li>
+            <button onClick={handleRefresh}>Início</button>
           </ul>
         </div>
       )}
