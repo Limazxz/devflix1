@@ -1,5 +1,7 @@
 import styles from "./Footer.module.css";
 import linkedin from "../../assets/logo-linkedin-2.svg"; // Importa o ícone do LinkedIn
+import Instagram from "../../assets/logo-instagram-1.svg"; // Importa o ícone do Instagram
+//   };
 
 const Footer = (props) => {
   return (
@@ -18,6 +20,12 @@ const Footer = (props) => {
         className={styles.linkedin}
       >
         <img src={linkedin} alt="LinkedIn" />
+      </a>
+
+      <a href="https://www.instagram.com/limazxzn/" target="_blank"
+      rel="noopener noreferrer">
+        <img src={Instagram} alt="Instagram" />
+
       </a>
     </footer>
   );

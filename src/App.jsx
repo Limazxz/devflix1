@@ -11,6 +11,8 @@ import axios from "axios";
 import MoonIcon from "./assets/moon-outline.svg"; // Ícone de lua
 import SunIcon from "./assets/sunny-outline.svg"; // Ícone de sol
 import Switch from "./components/switch/Switch"; // Importa o switch atualizado
+import Instagram from "./assets/logo-instagram-1.svg"; // Importa o ícone do Instagram
+import HamburgerMenu from "./components/hamburgermenu/HamburgerMenu"; // Importa o componente do menu hamburger
 
 const App = () => {
   const [search, setSearch] = useState(""); // Estado para o termo de busca
@@ -31,6 +33,19 @@ const App = () => {
 
     document.documentElement.setAttribute("data-bs-theme", tema);
   };
+
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NTA2YTA3Y2FmMWNiNDk4YTc5ZDZiZDUwNWM2YjYyZSIsIm5iZiI6MTc0MjMzNDM0NS43ODgsInN1YiI6IjY3ZDllOTg5MTk3NGRmYmVhZjJjZDI5YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Brd9R7MqbhSEzcTwKx1zmecJqrKeFuxE_Y8UlCSYRdE'
+    }
+  };
+  
+  fetch('https://api.themoviedb.org/3/tv/changes?page=1', options)
+    .then(res => res.json())
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
 
   mudaTema(); // Chama a função ao carregar o site
 
@@ -95,6 +110,11 @@ const App = () => {
 
   return (
     <div id="app">
+      {/* Menu hamburger no canto superior esquerdo */}
+      <div className="hamburger-menu">
+        <HamburgerMenu />
+      </div>
+
       {/* Switch para alternar o tema no canto superior direito */}
       <div className="theme-switch">
         <Switch
@@ -181,6 +201,9 @@ const App = () => {
       <Footer devName={" Limazxzn"} devLink={"https://github.com/Limazxz"}>
         <a href="https://www.linkedin.com/in/pedro-silva-de-lima-083562313/">
           <img src={linkedin} alt="LinkedIn" /> {/* Ícone do LinkedIn */}
+        </a>
+        <a href="https://www.instagram.com/limazxzn/">
+          <img src={Instagram} alt="Instagram" /> {/* Ícone do Instagram */}
         </a>
       </Footer>
     </div>

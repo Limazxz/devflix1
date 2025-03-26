@@ -34,7 +34,14 @@ const MovieDescription = ({ apiUrl, movieID, click }) => {
               className={styles.poster}
             />
             {showWatchButton && (
-              <button className={styles.watchButton}>▶️ Assistir</button>
+              <a
+                href="https://www.google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.watchButton}
+              >
+                ▶️ Assistir
+              </a>
             )}
           </div>
           <h2>{movieDesc.title || "Título não disponível"}</h2>

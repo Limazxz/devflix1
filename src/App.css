@@ -282,7 +282,7 @@ body {
 .logo.small img {
   width: 200px;
   height: auto;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease;;
 }
 /* Estilo do MovieDescription */
 .movie-description {
@@ -311,7 +311,7 @@ body {
   color: #333; /* Cor do botão */
   cursor: pointer;
   z-index: 1100; /* Garante que o botão fique acima do conteúdo */
-  transition: color 0.3s ease; /* Transição suave para hover */
+  transition: color 0.3s ease; /* Transição suave para hover */;
 }
 
 .movie-description-close:hover {
@@ -384,7 +384,25 @@ body {
 }
 
 .theme-switch img {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Espaçamento entre os ícones */
+}
+
+footer img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+footer img:hover {
+  transform: scale(1.2); /* Aumenta o tamanho ao passar o mouse */
 }
