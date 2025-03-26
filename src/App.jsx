@@ -13,6 +13,9 @@ import SunIcon from "./assets/sunny-outline.svg"; // Ícone de sol
 import Switch from "./components/switch/Switch"; // Importa o switch atualizado
 import Instagram from "./assets/logo-instagram-1.svg"; // Importa o ícone do Instagram
 import HamburgerMenu from "./components/hamburgermenu/HamburgerMenu"; // Importa o componente do menu hamburger
+import "./scss/styles.scss";
+
+
 
 const App = () => {
   const [search, setSearch] = useState(""); // Estado para o termo de busca
