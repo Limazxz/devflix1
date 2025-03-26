@@ -21,12 +21,6 @@ const Footer = (props) => {
       >
         <img src={linkedin} alt="LinkedIn" />
       </a>
-
-      <a href="https://www.instagram.com/limazxzn/" target="_blank"
-      rel="noopener noreferrer">
-        <img src={Instagram} alt="Instagram" />
-
-      </a>
     </footer>
   );
 };

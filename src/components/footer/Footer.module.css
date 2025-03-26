@@ -51,13 +51,3 @@ footer p ion-icon {
 .linkedin img:hover {
   transform: scale(1.1); /* Aumenta o ícone ao passar o mouse */
 }
-footer img {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-footer img:hover {
-  transform: scale(1.2); /* Aumenta o tamanho ao passar o mouse */
-}

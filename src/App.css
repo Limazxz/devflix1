@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-  --font-raleway: "Raleway", sans-serif !important;
-  --bs-body-bg: #f0f0f0;
+  --bs-body-bg: var(--gray-200) !important;
 }
-[data-bs-theme="dark"]{
-  --bs-body-bg: #1f1f1f !important;
+
+
+[data-bs-theme="dark"] {
+  --bs-body-bg: var(--gray-900) !important;
 }
   
 
@@ -282,7 +283,7 @@ body {
 .logo.small img {
   width: 200px;
   height: auto;
-  transition: all 0.3s ease;;
+  transition: all 0.3s ease;
 }
 /* Estilo do MovieDescription */
 .movie-description {
@@ -311,7 +312,7 @@ body {
   color: #333; /* Cor do botão */
   cursor: pointer;
   z-index: 1100; /* Garante que o botão fique acima do conteúdo */
-  transition: color 0.3s ease; /* Transição suave para hover */;
+  transition: color 0.3s ease; /* Transição suave para hover */
 }
 
 .movie-description-close:hover {
@@ -384,25 +385,7 @@ body {
 }
 
 .theme-switch img {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
-}
-
-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px; /* Espaçamento entre os ícones */
-}
-
-footer img {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-footer img:hover {
-  transform: scale(1.2); /* Aumenta o tamanho ao passar o mouse */
 }
