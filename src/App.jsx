@@ -45,7 +45,7 @@ const App = () => {
     }
   };
   
-  fetch('https://api.themoviedb.org/3/tv/changes?page=1', options)
+  fetch(apiUrl, options)
     .then(res => res.json())
     .then(res => console.log(res))
     .catch(err => console.error(err));
@@ -123,10 +123,10 @@ const App = () => {
         <Switch
           onChange={toggleTheme}
           checked={theme === "dark"}
-          checkedIcon={<img src={MoonIcon} alt="Dark Mode" />}
-          uncheckedIcon={<img src={SunIcon} alt="Light Mode" />}
-          offColor="#f5f5f5"
-          onColor="#222"
+          checkedIcon={<img src={MoonIcon} alt="Dark Mode" style={{ background: "none" }} />} // Remove o fundo
+          uncheckedIcon={<img src={SunIcon} alt="Light Mode" style={{ background: "none" }} />} // Remove o fundo
+          offColor="transparent" // Remove o fundo do switch
+          onColor="transparent" // Remove o fundo do switch
         />
       </div>
 

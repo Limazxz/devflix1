@@ -20,9 +20,9 @@ const HamburgerMenu = () => {
       {isOpen && (
         <div className="menu-dropdown">
           <ul>
-            <li><a href="#home">Início</a></li>
-            <li><a href="#popular">Populares</a></li>
-            <li><a href="#search">Pesquisar</a></li>
+            <li><a href="#home">Filmes</a></li>
+            <li><a href="#popular">Séries</a></li>
+            <li><a href="#popular">Inicío</a></li>
           </ul>
         </div>
       )}
